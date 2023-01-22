@@ -23,6 +23,10 @@ public class Dog {
         this.origin = origin;
     }
 
+    public Dog() {
+
+    }
+
     public Long getId() {
         return id;
     }

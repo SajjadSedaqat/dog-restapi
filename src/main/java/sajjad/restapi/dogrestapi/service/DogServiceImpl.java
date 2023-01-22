@@ -6,6 +6,7 @@ import sajjad.restapi.dogrestapi.entity.Dog;
 import sajjad.restapi.dogrestapi.repository.DogRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DogServiceImpl implements DogService{
@@ -30,7 +31,9 @@ public class DogServiceImpl implements DogService{
 
     @Override
     public String retrieveDogBreedById(Long id) {
-        return dogRepository.findDogBreedById(id);
+        Optional<String> optionalBreed = Optional.ofNullable(dogRepository.findDogBreedById(id));
+        String breed = optionalBreed.orElseThrow(DogNotFoundException::new);
+        return breed;
     }
 
     @Override
